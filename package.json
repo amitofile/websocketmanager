@@ -1,0 +1,34 @@
+{
+  "name": "websocket-manager",
+  "version": "1.0.0",
+  "description": "Websocket manager is authentication and authorization layer for websocket connections.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amitofile/websocket-manager.git"
+  },
+  "author": "Amit P",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amitofile/websocket-manager/issues"
+  },
+  "homepage": "https://github.com/amitofile/websocket-manager#readme",
+  "dependencies": {
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "http-proxy": "^1.18.1",
+    "ioredis": "^4.28.0",
+    "jsonwebtoken": "^9.0.0",
+    "moment": "^2.29.1",
+    "mongodb": "^4.1.1",
+    "mysql2": "^3.11.0",
+    "node-cache": "^5.1.2",
+    "portscanner": "^2.2.0",
+    "short-unique-id": "^4.4.4",
+    "socket.io": "^4.3.2",
+    "uuid": "^8.3.2"
+  }
+}

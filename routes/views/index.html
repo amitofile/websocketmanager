@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./marketlive/imgs/growth.png">
+    <title>Websocket-Live | Documentation</title>
+    <!-- Bootstrap core CSS -->
+    <link href="./marketlive/libs/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="./marketlive/libs/css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--- <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#"> Websocket-Live</a>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap"></li>
+        </ul>
+    </nav> -->
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <nav class="navbar navbar-dark bg-dark flex-md-nowrap p-0">
+                    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#dashboard"> Websocket-Live</a>
+                </nav>
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#dashboard">
+                                <span data-feather="home"></span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <h6
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>User APIs</span>
+                    </h6>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#token-generate">
+                                <span data-feather="key"></span>
+                                <span>Token Generate</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h6
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Websocket</span>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#price-feed">
+                                <span data-feather="trending-up"></span>
+                                <span>Price feed</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#order-feed">
+                                <span data-feather="trending-up"></span>
+                                <span>Order feed</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h6
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Description</span>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#events">
+                                <span data-feather="trending-up"></span>
+                                <span>Events</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h6
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Appendix</span>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#clientjs">
+                                <span data-feather="trending-up"></span>
+                                <span>Client SDKs</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="fixed-bottom">
+                        <span class="text-muted">© 2024 amitofile.com</span>
+                    </div>
+                </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                <div id="dashboard"></div>
+                <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true"
+                    class="scrollspy-example-2" tabindex="0">
+                    <div class="d-flex align-items-center p-3 my-3 text-white bg-primary rounded shadow-sm"
+                        id="token-generate">
+                        <div class="lh-1">
+                            <h1 class="h6 mb-0 text-white lh-1 display-6">Token Generate</h1>
+                        </div>
+                    </div>
+
+                    <div class="my-3 p-3 bg-body rounded shadow-sm">
+                        <h6 class="border-bottom pb-2 mb-0">Normal</h6>
+                        <div class="d-flex text-muted pt-3">
+                            <p class="pb-3 mb-0 small lh-sm border-bottom">
+                                <span class="badge bg-primary">POST</span>
+                                <span class="d-inline-block" tabindex="0" data-bs-toggle="popover"
+                                    data-bs-trigger="hover focus" data-bs-custom-class="custom-popover"
+                                    data-bs-content="https://amitofile.com/marketlive/auth/token"><span
+                                        class="api-url">/marketlive/auth/token</span></span>
+                                <br>
+                                <br>
+                                <strong class="d-block">Header</strong>
+                                Authorization: Basic <i>base64(ConsumerKey:ConsumerSecret)</i>
+                                <br>
+                                <br>
+                                <strong class="d-block">cURL</strong>
+                                curl --request POST 'https://amitofile.com/marketlive/auth/token'
+                                --header
+                                'Authorization: Basic <i>base64(ConsumerKey:ConsumerSecret)</i>'
+                                <br>
+                                <br>
+                                <strong class="d-block">Description</strong>
+                                This is a regular API to generate access token for websocket connection.
+                                <br>Required: Authorization credentials.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="my-3 p-3 bg-body rounded shadow-sm">
+                        <h6 class="border-bottom pb-2 mb-0">With application(s)</h6>
+                        <div class="d-flex text-muted pt-3">
+                            <p class="pb-3 mb-0 small lh-sm border-bottom">
+                                <span class="badge bg-primary">POST</span>
+                                <span class="d-inline-block" tabindex="0" data-bs-toggle="popover"
+                                    data-bs-trigger="hover focus" data-bs-custom-class="custom-popover"
+                                    data-bs-content="https://amitofile.com/marketlive/auth/token"><span
+                                        class="api-url">/marketlive/auth/token</span></span>
+                                <br>
+                                <br>
+                                <strong class="d-block">Header</strong>
+                                Authorization: Basic <i>base64(ConsumerKey:ConsumerSecret)</i>
+                                <br>
+                                Content-Type: application/x-www-form-urlencoded
+                                <br>
+                                <br>
+                                <strong class="d-block">Body</strong>
+                                application=<i>{your-application}</i>
+                                <br>
+                                <br>
+                                <strong class="d-block">cURL</strong>
+                                curl --request POST 'https://amitofile.com/marketlive/auth/token'
+                                --header 'Authorization: Basic <i>base64(ConsumerKey:ConsumerSecret)</i>'
+                                --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode
+                                'application=<i>your-application</i>'
+                                <br>
+                                <br>
+                                <strong class="d-block">Description</strong>
+                                Access tokens are application based. If application name is not provided, "default"
+                                application is selected for generating access tokens.
+                                <br>Required: Authorization credentials.
+                                <br><br>Note: User can provide only registered application name.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="my-3 p-3 bg-body rounded shadow-sm">
+                        <h6 class="border-bottom pb-2 mb-0">With scope</h6>
+                        <div class="d-flex text-muted pt-3">
+                            <p class="pb-3 mb-0 small lh-sm border-bottom">
+                                <span class="badge bg-primary">POST</span>
+                                <span class="d-inline-block" tabindex="0" data-bs-toggle="popover"
+                                    data-bs-trigger="hover focus" data-bs-custom-class="custom-popover"
+                                    data-bs-content="https://amitofile.com/marketlive/auth/token"><span
+                                        class="api-url">/marketlive/auth/token</span></span>
+                                <br>
+                                <br>
+                                <strong class="d-block">Header</strong>
+                                Authorization: Basic <i>base64(ConsumerKey:ConsumerSecret)</i>
+                                <br>
+                                Content-Type: application/x-www-form-urlencoded
+                                <br>
+                                <br>
+                                <strong class="d-block">Body</strong>
+                                scope=<i>{prices|orders|all}</i>
+                                <br>
+                                <br>
+                                <strong class="d-block">cURL</strong>
+                                curl --request POST 'https://amitofile.com/marketlive/auth/token'
+                                --header 'Authorization: Basic <i>base64(ConsumerKey:ConsumerSecret)</i>'
+                                --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode
+                                'scope=<i>prices|orders|all</i>'
+                                <br>
+                                <br>
+                                <strong class="d-block">Description</strong>
+                                Scopes are used to limit usability of access tokens. For example, access token generated
+                                using "prices" scope can be used to connect price feed only.
+                                Likewise "orders" scope for order feed and "all" scope for any feed.
+                                <br>Required: Authorization credentials.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="my-3 p-3 bg-body rounded shadow-sm">
+                        <h6 class="border-bottom pb-2 mb-0">Token regenerate</h6>
+                        <div class="d-flex text-muted pt-3">
+                            <p class="pb-3 mb-0 small lh-sm border-bottom">
+                                <span class="badge bg-primary">POST</span>
+                                <span class="d-inline-block" tabindex="0" data-bs-toggle="popover"
+                                    data-bs-trigger="hover focus" data-bs-custom-class="custom-popover"
+                                    data-bs-content="https://amitofile.com/marketlive/auth/token/regenerate"><span
+                                        class="api-url">/marketlive/auth/token/regenerate</span></span>
+                                <br>
+                                <br>
+                                <strong class="d-block">Header</strong>
+                                Authorization: Basic <i>base64(ConsumerKey:ConsumerSecret)</i>
+                                <br>
+                                <br>
+                                <strong class="d-block">cURL</strong>
+                                curl --request POST
+                                'https://amitofile.com/marketlive/auth/token/regenerate'
+                                --header 'Authorization: Basic <i>base64(ConsumerKey:ConsumerSecret)</i>'
+                                <br>
+                                <br>
+                                <strong class="d-block">Description</strong>
+                                User can regenerate access token for specific application or scope. New access token
+                                will be
+                                generated if no old access token found for given specification.
+                                <br>Required: Authorization credentials.
+                                <br><br>Note: Old access token with same specification will be disabled after
+                                regenerating
+                                new.
+                            </p>
+                        </div>
+                    </div>
+
+                    <br>
+                    <!---------------Price Feed-------------->
+
+                    <div class="d-flex align-items-center p-3 my-3 text-white bg-primary rounded shadow-sm"
+                        id="price-feed">
+                        <div class="lh-1">
+                            <h1 class="h6 mb-0 text-white lh-1 display-6">Price feed</h1>
+                        </div>
+                    </div>
+
+                    <div class="my-3 p-3 bg-body rounded shadow-sm">
+                        <h6 class="border-bottom pb-2 mb-0"></h6>
+                        <div class="d-flex text-muted pt-3">
+                            <p class="pb-3 mb-0 small lh-sm">
+                                <span class="badge bg-primary">WSS</span>
+                                <span class="d-inline-block" tabindex="0" data-bs-toggle="popover"
+                                    data-bs-trigger="hover focus" data-bs-custom-class="custom-popover"
+                                    data-bs-content="https://amitofile.com/marketlive"><span
+                                        class="api-url"> amitofile.com/marketlive/marketlive</span></span>
+                                <br>
+                                <br>
+                                <strong class="d-block">Header</strong>
+                                Authorization: Bearer <i>{access_token}</i>
+                                <br>
+                                -- OR --
+                                <br>
+                                <strong class="d-block">Query params</strong>
+                                access_token=<i>{access_token}</i>
+                            </p>
+                        </div>
+
+                        <div class="d-flex text-muted pt-3">
+                            <p class="pb-3 mb-0 small lh-sm">
+                                <strong class="d-block">Socket.io</strong>
+                            </p>
+                            <ul>
+                                <li>
+                                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover"
+                                        data-bs-trigger="hover focus" data-bs-custom-class="custom-popover"
+                                        data-bs-content="Client version that will be used for connecting with the server">
+                                        <span><u>Client version</u>: v4</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover"
+                                        data-bs-trigger="hover focus" data-bs-custom-class="custom-popover"
+                                        data-bs-content="Server path that will be used during the handshake request">
+                                        <span><u>Handshake path</u>: /marketlive/prices</span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="d-flex text-muted pt-3">
+                            <p class="pb-3 mb-0 small lh-sm">
+                                <strong class="d-block">Events</strong>
+                            </p>
+                            <ul>
+                                <li>
+                                    on
+                                    <ul>
+                                        <li>broadcast</li>
+                                        <li>ping</li>
+                                        <li>getstock</li>
+                                        <li>getmarket</li>
+                                        <li>getindice</li>
+                                        <li>getexchange</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    emit
+                                    <ul>
+                                        <li>ping</li>
+                                        <li>stockload</li>
+                                        <li>stockunload</li>
+                                        <li>marketload</li>
+                                        <li>marketunload</li>
+                                        <li>indiceload</li>
+                                        <li>indiceunload</li>
+                                        <li>exchangeload</li>
+                                        <li>exchangeunload</li>
+                                        <li>json</li>
+                                        <li>leaveall</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <br>
+                    <!-------Order feed------->
+
+                    <div class="d-flex align-items-center p-3 my-3 text-white bg-primary rounded shadow-sm"
+                        id="order-feed">
+                        <div class="lh-1">
+                            <h1 class="h6 mb-0 text-white lh-1 display-6">Order feed</h1>
+                        </div>
+                    </div>
+
+                    <div class="my-3 p-3 bg-body rounded shadow-sm">
+                        <h6 class="border-bottom pb-2 mb-0"></h6>
+                        <div class="d-flex text-muted pt-3">
+                            <p class="pb-3 mb-0 small lh-sm">
+                                <span class="badge bg-primary">WSS</span>
+                                <span class="d-inline-block" tabindex="0" data-bs-toggle="popover"
+                                    data-bs-trigger="hover focus" data-bs-custom-class="custom-popover"
+                                    data-bs-content="https://amitofile.com/marketlive"><span
+                                        class="api-url"> amitofile.com/marketlive/marketlive</span></span>
+                                <br>
+                                <br>
+                                <strong class="d-block">Header</strong>
+                                Authorization: Bearer <i>{access_token}</i>
+                                <br>
+                                -- OR --
+                                <br>
+                                <strong class="d-block">Query params</strong>
+                                access_token=<i>{access_token}</i>
+                            </p>
+                        </div>
+
+                        <div class="d-flex text-muted pt-3">
+                            <p class="pb-3 mb-0 small lh-sm">
+                                <strong class="d-block">Socket.io</strong>
+                            </p>
+                            <ul>
+                                <li>
+                                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover"
+                                        data-bs-trigger="hover focus" data-bs-custom-class="custom-popover"
+                                        data-bs-content="Client version that will be used for connecting with the server">
+                                        <span><u>Client version</u>: v4</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover"
+                                        data-bs-trigger="hover focus" data-bs-custom-class="custom-popover"
+                                        data-bs-content="Server path that will be used during the handshake request">
+                                        <span><u>Handshake path</u>: /marketlive/orders</span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="d-flex text-muted pt-3">
+                            <p class="pb-3 mb-0 small lh-sm">
+                                <strong class="d-block">Events</strong>
+                            </p>
+                            <ul>
+                                <li>
+                                    on
+                                    <ul>
+                                        <li>broadcast</li>
+                                        <li>ping</li>
+                                        <li>getorderstatus</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    emit
+                                    <ul>
+                                        <li>ping</li>
+                                        <li>json</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-------Description------->
+                    <div class="d-flex align-items-center p-3 my-3 text-white bg-primary rounded shadow-sm" id="events">
+                        <div class="lh-1">
+                            <h1 class="h6 mb-0 text-white lh-1 display-6">Events</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="d-flex text-muted pt-3">
+                            <p class="pb-3 mb-0 small lh-sm">
+                                <strong class="d-block">broadcast</strong>
+                                This event relays the information related to websocket connection. Every websocket
+                                should
+                                listen to this event throughout.<br>
+                                <code>
+                            socket.on("broadcast", function (msg) => {<br>
+                            &nbsp;&nbsp;&nbsp;console.log(msg);<br>
+                            });<br>
+                            </code>
+                            </p>
+                        </div>
+                        <div class="d-flex text-muted pt-3">
+                            <p class="pb-3 mb-0 small lh-sm">
+                                <strong class="d-block">ping</strong>
+                                This event is very important. For keeping websocket connected user must emit <i>socket
+                                    id</i> in
+                                response to ping event.<br>
+                                Any connection failing to respond ping event will be terminated.<br>
+                                <code>
+                            socket.on("ping", () => {<br>
+                            &nbsp;&nbsp;&nbsp;socket.emit("ping", socket.id);<br>
+                            });<br>
+                            </code>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex text-muted pt-3">
+                                <p class="pb-3 mb-0 small lh-sm">
+                                    <strong class="d-block">getstock</strong>
+                                    Capture stock price information.<br>
+                                    <code>
+                                socket.on("getstock", function (data) => {<br>
+                                &nbsp;&nbsp;&nbsp;console.log(data);<br>
+                                });<br>
+                                </code>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="d-flex text-muted pt-3">
+                                <p class="pb-3 mb-0 small lh-sm">
+                                    <strong class="d-block">getmarket</strong>
+                                    Capture stock market updates.<br>
+                                    <code>
+                                socket.on("getmarket", function (data) => {<br>
+                                &nbsp;&nbsp;&nbsp;console.log(data);<br>
+                                });<br>
+                                </code>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex text-muted pt-3">
+                                <p class="pb-3 mb-0 small lh-sm">
+                                    <strong class="d-block">getindice</strong>
+                                    Capture indice information.<br>
+                                    <code>
+                                socket.on("getindice", function (data) => {<br>
+                                &nbsp;&nbsp;&nbsp;console.log(data);<br>
+                                });<br>
+                                </code>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="d-flex text-muted pt-3">
+                                <p class="pb-3 mb-0 small lh-sm">
+                                    <strong class="d-block">getexchange</strong>
+                                    Capture exchange status updates.<br>
+                                    <code>
+                                    socket.on("getexchange", function (data) => {<br>
+                                    &nbsp;&nbsp;&nbsp;console.log(data);<br>
+                                    });<br>
+                                    </code>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="d-flex text-muted pt-3">
+                            <p class="pb-3 mb-0 small lh-sm">
+                                <strong class="d-block">getorderstatus</strong>
+                                Capture order status information (for your orders).<br>
+                                <code>
+                                socket.on("getorderstatus", function (data) => {<br>
+                                &nbsp;&nbsp;&nbsp;console.log(data);<br>
+                                });<br>
+                                </code>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex text-muted pt-3">
+                                <p class="pb-3 mb-0 small lh-sm">
+                                    <strong class="d-block">stockload</strong>
+                                    Load script(s) for <i>getstock</i> event in price feed. Only 15 wtokens can be
+                                    passed in single emit.<br>
+                                    <code>
+                                    socket.emit("stockload", { "wtokens": "wtoken1,wtoken2,...,wtoken15" });<br>
+                                    </code>
+                                    or
+                                    <br>
+                                    <code>
+                                    socket.emit("stockload", { "wtokens": [wtoken1,wtoken2,...,wtoken15] });<br>
+                                    </code>
+                                    or
+                                    <br>
+                                    <code>
+                                    socket.emit("stockload", "wtoken1,wtoken2,...,wtoken15");<br>
+                                    </code>
+                                    or
+                                    <br>
+                                    <code>
+                                    socket.emit("stockload", [wtoken1,wtoken2,...,wtoken15]);<br>
+                                    </code>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="d-flex text-muted pt-3">
+                                <p class="pb-3 mb-0 small lh-sm">
+                                    <strong class="d-block">stockunload</strong>
+                                    Remove stock(s) from <i>getstock</i> event. Only 15 wtokens can be passed in
+                                    single emit.<br>
+                                    <code>
+                                    socket.emit("stockunload", { "wtokens": "wtoken1,wtoken2,...,wtoken15" });<br>
+                                    </code>
+                                    or
+                                    <br>
+                                    <code>
+                                    socket.emit("stockunload", { "wtokens": [wtoken1,wtoken2,...,wtoken15] });<br>
+                                    </code>
+                                    or
+                                    <br>
+                                    <code>
+                                    socket.emit("stockunload", "wtoken1,wtoken2,...,wtoken15");<br>
+                                    </code>
+                                    or
+                                    <br>
+                                    <code>
+                                    socket.emit("stockunload", [wtoken1,wtoken2,...,wtoken15]);<br>
+                                    </code>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex text-muted pt-3">
+                                <p class="pb-3 mb-0 small lh-sm">
+                                    <strong class="d-block">marketload</strong>
+                                    Load script(s) for <i>getmarket</i> event in price feed.<br>
+                                    <code>
+                                    socket.emit("marketload", { "wtokens": "wtoken1,wtoken2,...,wtoken15" });<br>
+                                    </code>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="d-flex text-muted pt-3">
+                                <p class="pb-3 mb-0 small lh-sm">
+                                    <strong class="d-block">marketunload</strong>
+                                    Remove stock(s) from <i>getmarket</i> event.<br>
+                                    <code>
+                                    socket.emit("marketunload", { "wtokens": "wtoken1,wtoken2,...,wtoken15" });<br>
+                                    </code>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex text-muted pt-3">
+                                <p class="pb-3 mb-0 small lh-sm">
+                                    <strong class="d-block">indiceload</strong>
+                                    Load script(s) for <i>getindice</i> event in price feed.<br>
+                                    <code>
+                                    socket.emit("indiceload", { "wtokens": "wtoken1,wtoken2,...,wtoken15" });<br>
+                                    </code>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="d-flex text-muted pt-3">
+                                <p class="pb-3 mb-0 small lh-sm">
+                                    <strong class="d-block">indiceunload</strong>
+                                    Remove script(s) from <i>getindice</i> event.<br>
+                                    <code>
+                                    socket.emit("indiceunload", { "wtokens": "wtoken1,wtoken2,...,wtoken15" });<br>
+                                    </code>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex text-muted pt-3">
+                                <p class="pb-3 mb-0 small lh-sm">
+                                    <strong class="d-block">exchangeload</strong>
+                                    Load exchange codes (NN or BN) for <i>getexchange</i>.<br>
+                                    <code>
+                                    socket.emit("exchangeload", "NN");<br>
+                                    </code>
+                                    or<br>
+                                    <code>
+                                    socket.emit("exchangeload", "BN");<br>
+                                    </code>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="d-flex text-muted pt-3">
+                                <p class="pb-3 mb-0 small lh-sm">
+                                    <strong class="d-block">exchangeunload</strong>
+                                    Remove exchange code from <i>getexchange</i>.<br>
+                                    <code>
+                                    socket.emit("exchangeunload", "NN");<br>
+                                    </code>
+                                    or<br>
+                                    <code>
+                                    socket.emit("exchangeunload", "BN");<br>
+                                    </code>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex text-muted pt-3">
+                                <p class="pb-3 mb-0 small lh-sm">
+                                    <strong class="d-block">json</strong>
+                                    Convert feed response in JSON or non jSON (CSV) format.<br>
+                                    <code>
+                                    socket.emit("json", "true");<br>
+                                    </code>
+                                    or<br>
+                                    <code>
+                                    socket.emit("json", "false");<br>
+                                    </code>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="d-flex text-muted pt-3">
+                                <p class="pb-3 mb-0 small lh-sm">
+                                    <strong class="d-block">leaveall</strong>
+                                    Deselect all scripts. Feed will stop but not disconnect, user can load new scripts.<br>
+                                    <code>
+                                    socket.emit("leaveall", "true");<br>
+                                    </code>
+                                    or<br>
+                                    <code>
+                                    socket.emit("leaveall", "false");<br>
+                                    </code>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-------Apendix------->
+                    <div class="d-flex align-items-center p-3 my-3 text-white bg-primary rounded shadow-sm"
+                        id="clientjs">
+                        <div class="lh-1">
+                            <h1 class="h6 mb-0 text-white lh-1 display-6">Client SDKs</h1>
+                        </div>
+                    </div>
+
+                    <div class="my-3 p-3 bg-body rounded shadow-sm">
+                        <h6 class="border-bottom pb-2 mb-0"></h6>
+                        <div class="d-flex text-muted pt-3">
+                            <p class="pb-3 mb-0 small lh-sm">
+                                JavaScript:
+                                <br>
+                                <a target="_blank" href="https://github.com/amitofile/WebsocketJavaScript">https://github.com/amitofile/WebsocketJavaScript</a>
+                                <br><br>
+                                Python:
+                                <br>
+                                <a target="_blank" href="https://github.com/amitofile/WebsocketPython">https://github.com/amitofile/WebsocketPython</a>
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./marketlive/libs/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="./marketlive/libs/js/popper.min.js"></script>
+    <script src="./marketlive/libs/js/bootstrap.min.js"></script>
+    <script src="./marketlive/libs/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+            const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+        });
+    </script>
+    <!-- Icons -->
+    <script src="./marketlive/libs/js/feather.min.js"></script>
+    <script>
+        feather.replace()
+    </script>
+</body>
+
+</html>

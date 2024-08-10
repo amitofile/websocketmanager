@@ -1,0 +1,84 @@
+{
+    "default": {
+        "application": "Websocket-Auth",
+        "ENV": "development",
+        "BUILD": "2.2.0",
+        "default_error_code": 400,
+        "default_success_code": 200,
+        "default_content_type": "application/json",
+        "log_mode": "ERROR|WARNING|INFO|TRACE",
+        "log_on_consol": true,
+        "log_path": "./logs",
+        "log_rotate": true,
+        "log_date_format": "DD-MM-YYYY H:mm:ss",
+        "DEBUG": true
+    },
+    "app": {
+        "wsman_port": 3000,
+        "fault_stremr_port": 3001,
+        "EIO": 4,
+        "transport": "websocket",
+        "feed_path": "/marketlive",
+        "market_feed_path": "/prices",
+        "order_feed_path": "/orders",
+        "registration_token": "cpiddsad6fa6f5d3U0Vs",
+        "verification_token": "iiLewgfe5w4fgw6e4f5sux",
+        "jwt_secret": "pGRsvwgerfgwe6345BTrOm",
+        "jwt_min_diff": 5,
+        "crypto_algo": "aes-256-cbc",
+        "crypto_key": "4p54bwefg54fg6we4652aGdyan",
+        "crypto_iv": "pvZ3gfwfgewf1z21vc",
+        "newuser_default": {
+            "connections": 5,
+            "scripts_total": 90,
+            "token_validity": 1440,
+            "scripts_per_request": 10
+        },
+        "TTL_CHECK": 10,
+        "monitor": 10,
+        "monitor2": 600,
+        "ping_validity": 2,
+        "faulty_hits_limit": 25,
+        "allowed_socpes": [
+            "all",
+            "prices",
+            "orders"
+        ]
+    },
+    "redis_config": {
+        "keepAlive": true,
+        "host": "127.0.0.1",
+        "port": 6379,
+        "master_name": "mymaster",
+        "auth": "fdg6th345r65",
+        "db": {
+            "market": 0,
+            "stream": 1,
+            "master": 2,
+            "live_sessions": 3,
+            "session_details": 4,
+            "live_sessions_orders": 5,
+            "session_details_orders": 6,
+            "rooms_prices": 11,
+            "rooms_orders": 12,
+            "feeder_status": 13,
+            "settings": 14,
+            "stats": 15
+        },
+        "key_expiry": [
+            2,
+            "days"
+        ]
+    },
+    "mongo_config": {
+        "uri": "mongodb://localhost:27017",
+        "db": "websocket_manager"
+    },
+    "mysql_config": {
+        "host": "127.0.0.1",
+        "port": 3306,
+        "user": "root",
+        "database": "websktmngr",
+        "password": "gjkyt941gh6789j"
+    }
+}
